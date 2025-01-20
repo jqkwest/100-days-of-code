@@ -3,42 +3,42 @@ import random
 words = ["one","two","three","four","five","six"]
 
 hang_state = [
-    "+-------+"
-    "   |    |"
-    "        |"
-    "        |"
-    "        |"
-    "        |",
-     "+-------+"
-    "   |    |"
-    "   O    |"
-    "        |"
-    "        |"
-    "        |",
-    "+-------+"
-    "   |    |"
-    "   O    |"
-    "   |    |"
-    "   |    |"
-    "        |",
-    "+-------+"
-    "   |    |"
-    "   O    |"
-    " --|--  |"
-    "   |    |"
-    "        |",
-    "+-------+"
-    "   |    |"
-    "   O    |"
-    " --|--  |"
-    "   |    |"
-    "  /     |",
-    "+-------+"
-    "   |    |"
-    "   O    |"
-    " --|--  |"
-    "   |    |"
-    "  / \   |"
+    '''+-------+
+       |    |
+            |
+            |
+            |
+            |''',
+    '''+-------+"
+       |    |
+       O    |
+            |
+            |
+            |''',
+    '''+-------+
+       |    |
+       O    |
+       |    |
+       |    |
+       |    |''',
+    '''+-------+
+       |    |
+       O    |
+     --|--  |
+       |    |
+       |    |''',
+    '''+-------+
+       |    |
+       O    |
+     --|--  |
+       |    |
+      /     |''',
+    '''+-------+
+       |    |
+       O    |
+     --|--  |
+       |    |
+      / \   |'''
 ]
 
 def main():
@@ -60,6 +60,8 @@ def main():
         print(word)  # temp for checking the game
 
         guess = input("Please guess a letter: " )
+        if guess not in word:
+            bad_guess_count += 1
         for letter in word:
             if letter == guess:
                 display += letter
@@ -67,13 +69,17 @@ def main():
             elif letter in current_guess_state:
                 display += letter
             else:
-                display += "_ "
-                bad_guess_count += 1 #there is a bug here. It is counting  each iteration istead of just once
-        
-                
-       # print(hang_state[bad_guess_count])
+                 display += "_ "
+             
+                        
+        print(hang_state[bad_guess_count])
         print(display)
-        print(bad_guess_count)
+        if bad_guess_count == len(word):
+            stil_guessing = False
+    
+    print("Sorry! Better luck next time!")
+
+        
 
 
 
